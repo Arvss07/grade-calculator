@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 75%;
+  text-align: center;
+}
+
+h6 {
+  font-size: large;
+  margin-top: -20px;
+  margin-bottom: 100px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #d6d6d6;
+}
+
+input {
+  width: 55%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+}
+
+#result h2 {
+  margin: 0;
+}
+
+#gwa-result {
+  color: red;
+}
+
+.calcu-btn-design {
+  background-color: #199b40;
+  font-weight: bold;
+  font-size: large;
+}
+
+.calcu-btn-design:hover {
+  background-color: #0d6e2c;
+}
+
+.instruction {
+  margin-bottom: 10px;
+  font-size: large;
+  display: flex;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

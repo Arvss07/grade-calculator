@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GWA Calculator</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>GWA Calculator</h1>
+    <h6>by Arvss</h6>
+    <p class="instruction">Enter your grades and units below to calculate your GWA.</p>
+    <form id="gwa-form">
+      <table id="subjects-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Units</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Subject 1:</td>
+            <td>
+              <input type="text" id="subject1" name="subject1" placeholder="Grade" inputmode="numeric" pattern="[0-9]*">
+            </td>
+            <td>
+              <input type="text" id="units1" name="units1" placeholder="Units" inputmode="numeric" pattern="[0-9]*">
+            </td>
+          </tr>
+          <tr>
+            <td>Subject 2:</td>
+            <td><input type="text" id="subject2" name="subject2" placeholder="Grade" inputmode="numeric"
+                pattern="[0-9]*"></td>
+            <td><input type="text" id="units2" name="units2" placeholder="Units" inputmode="numeric" pattern="[0-9]*">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" id="add-subject-btn">Add Subject</button>
+      <button type="button" id="calculate-btn" class="calcu-btn-design">Calculate GWA</button>
+    </form>
+    <div id="result">
+      <h2>Your GWA is: <span id="gwa-result"></span></h2>
+    </div>
+  </div>
+  <script src="../scripts/script.js"></script>
+</body>
+
+</html>
