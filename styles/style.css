@@ -81,11 +81,31 @@ button:hover {
 .calcu-btn-design {
   background-color: #199b40;
   font-weight: bold;
-  font-size: large;
+  font-size: medium;
+}
+
+.reset-form-btn-design {
+  background-color: #dc3545;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.add-btn-design {
+  background-color: #3351b4;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .calcu-btn-design:hover {
   background-color: #0d6e2c;
+}
+
+.reset-form-btn-design:hover {
+  background-color: #c82333;
+}
+
+.add-btn-design:hover {
+  background-color: #1e2d7c;
 }
 
 .instruction {
