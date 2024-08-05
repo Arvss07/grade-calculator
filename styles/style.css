@@ -34,14 +34,22 @@ th,
 td {
   padding: 8px;
   border: 1px solid #d6d6d6;
+  align-items: center;
 }
 
 input {
-  width: 55%;
+  /* width is depending on the column size */
+  width: auto;
+  max-width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 button {
@@ -91,4 +99,56 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h6 {
+    font-size: medium;
+    margin-bottom: 50px;
+  }
+
+  input {
+    width: 75%;
+  }
+
+  button {
+    padding: 8px 15px;
+  }
+
+  .instruction {
+    font-size: medium;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  h6 {
+    font-size: small;
+    margin-bottom: 30px;
+  }
+
+  input {
+    width: 75%;
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: small;
+  }
+
+  .instruction {
+    font-size: small;
+  }
 }
