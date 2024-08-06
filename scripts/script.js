@@ -7,16 +7,23 @@ function validListeners(inputField, category) {
     const value = event.target.value;
     const isNumber = /^[0-9]*\.?[0-9]*$/.test(value);
 
-    // check if input is a grade, less than 100, and greater than 65
-    // const isValidGrade =
-    //   isNumber && parseInt(value, 10) >= 65 && parseInt(value, 10) <= 100;
-
     // check if it a grade and a valid one
     if ((category === "subject" || category === "units") && !isNumber) {
       displayError();
       // consume last inputted character
       event.target.value = value.slice(0, -1);
     }
+
+    // Blur event listener for final validation
+    inputField.addEventListener("blur", function (event) {
+      const value = parseFloat(event.target.value);
+      const isValidGrade = !isNaN(value) && value >= 65 && value <= 100;
+
+      if (category === "subject" && !isValidGrade) {
+        displayError();
+        event.target.value = "";
+      }
+    });
   });
 } // end of validListeners
 
@@ -174,6 +181,13 @@ function resetForm(formID) {
     gradeInput.value = "";
     unitInputs[index].value = "";
   });
+
+  // retain the first and second row only
+  const table = htmlForm.querySelector("table tbody");
+  const rows = table.rows;
+  for (let i = rows.length - 1; i >= 2; i--) {
+    table.deleteRow(i);
+  }
 
   // reset the gwa result
   document.getElementById("gwa-result").textContent = "";
