@@ -31,7 +31,7 @@ function validListeners(inputField, category) {
 function displayError() {
   const errorMessage = document.querySelector(".error-message");
   if (!errorMessage) return;
-  errorMessage.textContent = "Please enter a valid number";
+  errorMessage.textContent = "Please enter a valid grade";
   errorMessage.style.color = "red";
 
   // change input border to red
@@ -217,5 +217,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // attach listener to the reset button
   document.getElementById("reset-btn").addEventListener("click", function () {
     resetForm("gwa-form");
+  });
+
+  //map enter key to calculate button
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      calculateGWA("gwa-form");
+    } else if (event.key === "Escape") {
+      resetForm("gwa-form");
+    }
   });
 });
