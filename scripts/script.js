@@ -29,14 +29,16 @@ function displayError() {
 
   // change input border to red
   const inputField = event.target;
-  inputField.style.border = "2px solid red";
+  inputField.style.border = "1px solid red";
+  inputField.style.animation = "myAnim .5s ease 0s 1 normal forwards";
 
   // revert if input is valid and error message is displayed
   setTimeout(() => {
     // insert heart emoji to the error message
     errorMessage.textContent = "🙂🙂🙂";
     inputField.style.border = ""; // revert to default border
-  }, 3000);
+    inputField.style.animation = ""; // remove animation
+  }, 1000);
 } // end of displayError
 
 /**
@@ -97,6 +99,66 @@ function addSubject(formId) {
   validListeners(unitsInput, "units");
 } // end of addSubject
 
+/** Function to remove unused rows */
+/** Function to remove all rows without a value in grade or unit input fields */
+function removeEmptyRows(formID) {
+  const htmlForm = document.getElementById(formID);
+  if (!htmlForm) return; // exit if form is not found
+
+  const table = htmlForm.querySelector("table tbody");
+  const rows = table.rows;
+
+  for (let i = rows.length - 1; i >= 0; i--) {
+    const gradeInput = rows[i].querySelector("input[id^=subject]");
+    const unitInput = rows[i].querySelector("input[id^=units]");
+
+    if (!gradeInput.value || !unitInput.value) {
+      table.deleteRow(i);
+    }
+  }
+} // end of removeEmptyRows
+
+/** Function to calculate GWA */
+function calculateGWA(formID) {
+  const htmlForm = document.getElementById(formID);
+  if (!htmlForm) return; // exit if form is not found
+
+  // remove empty rows
+  removeEmptyRows(formID);
+  // get grade inputs from the form
+  const gradeInputs = htmlForm.querySelectorAll("input[id^=subject]");
+  // get unit inputs from the form
+  const unitInputs = htmlForm.querySelectorAll("input[id^=units]");
+
+  // intialize totalUnits and weightedTotalGrade
+  let totalUnits = 0;
+  let weightedTotalGrade = 0;
+
+  // loop through each row
+  gradeInputs.forEach((gradeInput, index) => {
+    const grade = parseInt(gradeInput.value, 10); // convert to integer
+    const unit = parseInt(unitInputs[index].value, 10);
+
+    // check if grade is a number
+    if (!isNaN(grade) && !isNaN(unit)) {
+      // calculate the weighted grade
+      totalUnits += unit;
+      weightedTotalGrade += grade * unit;
+    }
+
+    if (totalUnits > 0) {
+      // calculate gwa
+      const gwa = weightedTotalGrade / totalUnits;
+      // display the gwa with 4 decimal places
+      document.getElementById("gwa-result").textContent = gwa.toFixed(4);
+    } else {
+      // display error message
+      document.getElementById("gwa-result").textContent =
+        "Enter your grades and units";
+    }
+  });
+} // end of calculateGWA
+
 /*
  * Add the listener to the html itself
  */
@@ -109,5 +171,12 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("add-subject-btn")
     .addEventListener("click", function () {
       addSubject("gwa-form");
+    });
+
+  // attach listener to the calculate button
+  document
+    .getElementById("calculate-btn")
+    .addEventListener("click", function () {
+      calculateGWA("gwa-form");
     });
 });
