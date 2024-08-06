@@ -159,6 +159,26 @@ function calculateGWA(formID) {
   });
 } // end of calculateGWA
 
+/** Reset Form to Default */
+function resetForm(formID) {
+  const htmlForm = document.getElementById(formID);
+  if (!htmlForm) return; // exit if form is not found
+
+  // get grade inputs from the form
+  const gradeInputs = htmlForm.querySelectorAll("input[id^=subject]");
+  // get unit inputs from the form
+  const unitInputs = htmlForm.querySelectorAll("input[id^=units]");
+
+  // loop through each row
+  gradeInputs.forEach((gradeInput, index) => {
+    gradeInput.value = "";
+    unitInputs[index].value = "";
+  });
+
+  // reset the gwa result
+  document.getElementById("gwa-result").textContent = "";
+} // end of resetForm
+
 /*
  * Add the listener to the html itself
  */
@@ -179,4 +199,9 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", function () {
       calculateGWA("gwa-form");
     });
+
+  // attach listener to the reset button
+  document.getElementById("reset-btn").addEventListener("click", function () {
+    resetForm("gwa-form");
+  });
 });
