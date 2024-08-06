@@ -17,8 +17,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 75%;
   text-align: center;
-  -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @-webkit-keyframes flip-in-hor-bottom {
@@ -67,6 +65,8 @@ td {
   padding: 8px;
   border: 1px solid #d6d6d6;
   align-items: center;
+  -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: myAnim2 .3s ease 0s 1 normal forwards;
 }
 
 input {
@@ -77,6 +77,45 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
+}
+
+@keyframes myAnim2 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes myAnim {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateX(10px);
+  }
+
+  80% {
+    transform: translateX(8px);
+  }
+
+  90% {
+    transform: translateX(-8px);
+  }
 }
 
 input:focus {
