@@ -5,7 +5,7 @@ function validListeners(inputField, category) {
   inputField.addEventListener("input", function (event) {
     // get the value of the input field
     const value = event.target.value;
-    const isNumber = /^[0-9]*$/.test(value);
+    const isNumber = /^[0-9]*\.?[0-9]*$/.test(value);
 
     // check if input is a grade, less than 100, and greater than 65
     // const isValidGrade =
